@@ -15,6 +15,7 @@ const setIdea = asyncHandler(async (req, res) => {
 
   const idea = await Idea.create({
     text: req.body.text,
+    user: req.user.id,
   });
   res.status(200).json(idea);
 });

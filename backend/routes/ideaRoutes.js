@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { getIdeas, setIdea, updateIdea, deleteIdea } = require("../controllers/ideaController");
+const { protect } = require("../middleware/authMiddleware");
 
-router.route("/").get(getIdeas).post(setIdea);
+router.route("/").get(protect, getIdeas).post(protect, setIdea);
 
-router.route("/:id").put(updateIdea).delete(deleteIdea);
+router.route("/:id").put(protect, updateIdea).delete(protect, deleteIdea);
 
 module.exports = router;

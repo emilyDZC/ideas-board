@@ -43,6 +43,23 @@ export const getIdeas = createAsyncThunk("ideas/getAll", async (_, thunkAPI) => 
   }
 });
 
+// Delete idea
+export const deleteIdea = createAsyncThunk("ideas/delete", async (id, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().auth.user.token;
+    return await ideaService.deleteIdea(id, token);
+  } catch (error) {
+    let message = "";
+    if (error.response && error.response.data && error.response.data.message) {
+      message = error.response.data.message;
+    } else {
+      message = error.message ? error.message : error.toString();
+    }
+
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 export const ideaSlice = createSlice({
   name: "idea",
   initialState,
@@ -73,6 +90,19 @@ export const ideaSlice = createSlice({
         state.ideas = action.payload;
       })
       .addCase(getIdeas.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(deleteIdea.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteIdea.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.ideas = state.ideas.filter((idea) => idea._id !== action.payload.id);
+      })
+      .addCase(deleteIdea.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

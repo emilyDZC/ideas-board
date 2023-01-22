@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "/api/ideas";
+const API_URL = "/api/ideas/";
 
 // Create idea
 const createIdea = async (ideaData, token) => {
@@ -31,10 +31,22 @@ const getIdeas = async (token) => {
 // Update idea
 
 // Delete idea
+const deleteIdea = async (goalId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.delete(API_URL + goalId, config);
+
+  return response.data;
+};
 
 const ideaService = {
   createIdea,
   getIdeas,
+  deleteIdea,
 };
 
 export default ideaService;

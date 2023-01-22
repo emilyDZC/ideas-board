@@ -28,6 +28,8 @@ const updateIdea = asyncHandler(async (req, res) => {
     throw new Error("Idea not found!");
   }
 
+  // TODO: Add some auth so that only ideas for the user's account can be updated
+  // User req.user and check that the user belongs to the current account
   const updatedIdea = await Idea.findByIdAndUpdate(req.params.id, req.body, { new: true });
   res.status(200).json(updatedIdea);
 });

@@ -35,8 +35,14 @@ function IdeasBoard() {
   return (
     <>
       <section className="heading">
-        <h1>Welcome {user.name}!</h1>
-        <p>Ideas Dashboard</p>
+        {user ? (
+          <>
+            <h1>Welcome {user.name}!</h1>
+            <p>Ideas Dashboard</p>
+          </>
+        ) : (
+          <></>
+        )}
       </section>
       <IdeaForm />
       <section className="content">

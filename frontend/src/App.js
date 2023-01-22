@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Header from "./components/Header";
 import IdeasBoard from "./pages/IdeasBoard";
 import Login from "./pages/Login";
@@ -8,7 +9,7 @@ function App() {
   return (
     <>
       <Router>
-        <div class="container">
+        <div className="container">
           <Header />
           <Routes>
             <Route path="/" element={<IdeasBoard />} />
@@ -17,6 +18,7 @@ function App() {
           </Routes>
         </div>
       </Router>
+      <ToastContainer />
     </>
   );
 }

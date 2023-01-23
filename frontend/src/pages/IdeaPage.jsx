@@ -8,7 +8,7 @@ import NoteForm from "../components/NoteForm";
 import Spinner from "../components/Spinner";
 
 function IdeaPage() {
-  const [notes, setNotes] = useState();
+  const [showForm, setShowForm] = useState(false);
   let { ideaId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,9 +38,15 @@ function IdeaPage() {
 
   return (
     <div>
-      <div>{idea.text}</div>
-      <NoteForm ideaId={idea._id} />
-      <div>{idea.notes && idea.notes.map((note) => <NoteItem key={note._id} note={note} />)}</div>
+      <div className="idea-header">{idea.text}</div>
+      <div className="button-container">
+        <button className="btn btn-clock" onClick={() => setShowForm(!showForm)}>
+          {showForm ? "Hide" : "Add note"}
+        </button>
+      </div>
+      {showForm && <NoteForm ideaId={idea._id} />}
+
+      <div className="notes-container">{idea.notes && idea.notes.map((note) => <NoteItem key={note._id} note={note} />)}</div>
     </div>
   );
 }

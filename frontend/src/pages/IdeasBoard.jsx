@@ -46,9 +46,11 @@ function IdeasBoard() {
         )}
       </section>
       <section className="content">
-        <button className="btn btn-block" onClick={() => setAddIdea(!addIdea)}>
-          {addIdea ? "Close" : "Add new idea"}
-        </button>
+        <div className="button-container">
+          <button className="btn btn-block" onClick={() => setAddIdea(!addIdea)}>
+            {addIdea ? "Close" : "Add new idea"}
+          </button>
+        </div>
         {addIdea ? <IdeaForm /> : ""}
       </section>
       <section className="content">

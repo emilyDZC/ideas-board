@@ -5,10 +5,22 @@ function NoteItem({ note }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="goal">
-      <div>{new Date(note.createdAt).toLocaleString("en-GB")}</div>
-      <h2>{note.text}</h2>
-      <div>{note.tags}</div>
+    <div className="note-item">
+      <div className="date-text">{new Date(note.createdAt).toLocaleString("en-GB")}</div>
+      <div className="note-text">{note.text}</div>
+      {/* TODO: save the user NAME to the note in order to display here */}
+      <div className="author-text">Posted by: Daisy</div>
+      {note.tags ? (
+        <div className="tags-container">
+          {note.tags.map((tag, i) => (
+            <div className="tag" key={i}>
+              {tag}
+            </div>
+          ))}
+        </div>
+      ) : (
+        ""
+      )}
       {/* <button onClick={() => dispatch(deleteIdea(note._id))}>X</button> */}
     </div>
   );

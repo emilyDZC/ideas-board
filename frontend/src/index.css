@@ -97,6 +97,23 @@ h3 {
   margin: 10px 0;
   padding: 20px 0 10px;
   position: relative;
+  max-width: 200px;
+  border-radius: 10px;
+}
+
+.note-item {
+  background-color: #f4f4f4;
+  margin: 10px 0;
+  padding: 20px 0 10px;
+  position: relative;
+  width: 400px;
+  border-radius: 10px;
+}
+
+.idea-header {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .goal .close {
@@ -139,7 +156,7 @@ h3 {
   padding: 10px 20px;
   border: 1px solid #000;
   border-radius: 5px;
-  background: #000;
+  background: rgb(75, 97, 138);
   color: #fff;
   font-size: 16px;
   font-weight: 700;
@@ -161,12 +178,19 @@ h3 {
 }
 
 .btn-block {
-  width: 100%;
+  /* width: 100%; */
   margin-bottom: 20px;
 }
 
 .btn:hover {
   transform: scale(0.98);
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .loadingSpinnerContainer {
@@ -189,6 +213,43 @@ h3 {
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
+}
+
+.tags-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+  justify-content: center;
+}
+
+.tag {
+  border-radius: 5px;
+  background-color: rgb(131, 180, 217);
+  border: 1px solid rgb(65, 115, 156);
+  padding: 0 8px;
+  text-align: center;
+  color: rgb(54, 54, 72);
+  font-size: 0.8rem;
+}
+
+.note-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.date-text {
+  font-size: 0.7rem;
+}
+
+.author-text {
+  font-size: 0.7rem;
+}
+
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes spin {

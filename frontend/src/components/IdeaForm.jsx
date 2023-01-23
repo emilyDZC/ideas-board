@@ -31,9 +31,11 @@ function IdeaForm() {
           <input type="text" name="tags" id="tags" value={tags} onChange={(e) => setTags(e.target.value)} placeholder="Add tags as a comma-separated list"></input>
         </div>
         <div className="form-group">
-          <button className="btn btn-block" type="submit">
-            Add idea
-          </button>
+          <div className="button-container">
+            <button className="btn btn-block" type="submit">
+              Add idea
+            </button>
+          </div>
         </div>
       </form>
     </section>

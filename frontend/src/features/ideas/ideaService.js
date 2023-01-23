@@ -28,17 +28,43 @@ const getIdeas = async (token) => {
   return response.data;
 };
 
-// Update idea
-
-// Delete idea
-const deleteIdea = async (goalId, token) => {
+// Get idea
+const getIdea = async (id, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
-  const response = await axios.delete(API_URL + goalId, config);
+  const response = await axios.get(API_URL + id + "/notes", config);
+
+  return response.data;
+};
+
+// Create idea note
+const createIdeaNote = async (noteData, id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.post(API_URL + id + "/notes", noteData, config);
+
+  return response.data;
+};
+
+// Update idea
+
+// Delete idea
+const deleteIdea = async (ideaId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.delete(API_URL + ideaId, config);
 
   return response.data;
 };
@@ -47,6 +73,8 @@ const ideaService = {
   createIdea,
   getIdeas,
   deleteIdea,
+  getIdea,
+  createIdeaNote,
 };
 
 export default ideaService;

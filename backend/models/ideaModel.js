@@ -20,16 +20,22 @@ const ideaSchema = mongoose.Schema(
       required: true,
       ref: "Account",
     },
-    notes: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Note",
-      },
-    ],
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+    toObject: {
+      virtuals: true,
+    },
   }
 );
+
+ideaSchema.virtual("notes", {
+  ref: "Note",
+  localField: "_id",
+  foreignField: "idea",
+});
 
 module.exports = mongoose.model("Idea", ideaSchema);

@@ -4,8 +4,10 @@ const Note = require("../models/noteModel");
 
 // Get idea notes
 const getIdeaNotes = asyncHandler(async (req, res) => {
+  // Bring back notes with idea
   const idea = await Idea.findById(req.params.id).populate("notes");
-  res.status(200).json(idea.notes);
+  idea.notes = idea.notes.sort((a, b) => b.createdAt - a.createdAt);
+  res.status(200).json(idea);
 });
 
 // Create idea note
@@ -19,6 +21,8 @@ const createIdeaNote = asyncHandler(async (req, res) => {
     text: req.body.text,
     user: req.user.id,
     idea: req.params.id,
+    tags: req.body.tags,
+    noteType: req.body.noteType,
   });
 
   res.status(200).json(note);

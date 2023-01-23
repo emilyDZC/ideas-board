@@ -14,6 +14,8 @@ function IdeasBoard() {
   const { ideas, isLoading, isError, message } = useSelector((state) => state.ideas);
   const [addIdea, setAddIdea] = useState(false);
 
+  const colours = ["76949F", "86BBBD", "6A6B83", "5F506B", "533747"];
+
   useEffect(() => {
     if (isError) {
       console.log(message);
@@ -56,8 +58,8 @@ function IdeasBoard() {
       <section className="content">
         {ideas.length > 0 ? (
           <div className="goals">
-            {ideas.map((idea) => (
-              <IdeaItem key={idea._id} idea={idea} />
+            {ideas.map((idea, i) => (
+              <IdeaItem key={idea._id} idea={idea} colour={colours[i]} />
             ))}
           </div>
         ) : (

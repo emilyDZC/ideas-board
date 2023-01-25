@@ -44,7 +44,7 @@ function IdeaPage() {
           {showForm ? "Hide" : "Add note"}
         </button>
       </div>
-      {showForm && <NoteForm ideaId={idea._id} />}
+      {showForm && <NoteForm ideaId={idea._id} onSave={() => setShowForm(false)} />}
 
       <div className="notes-container">{idea.notes && idea.notes.map((note) => <NoteItem key={note._id} note={note} />)}</div>
     </div>

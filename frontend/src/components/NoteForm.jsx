@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createIdeaNote } from "../features/ideas/ideaSlice";
 
-function NoteForm({ ideaId }) {
+function NoteForm({ ideaId, onSave }) {
   const [text, setText] = useState();
   const [tags, setTags] = useState();
 
@@ -25,6 +25,7 @@ function NoteForm({ ideaId }) {
     dispatch(createIdeaNote(payload));
     setText("");
     setTags("");
+    onSave();
   };
 
   return (

@@ -8,8 +8,7 @@ function NoteItem({ note }) {
     <div className="note-item">
       <div className="date-text">{new Date(note.createdAt).toLocaleString("en-GB")}</div>
       <div className="note-text">{note.text}</div>
-      {/* TODO: save the user NAME to the note in order to display here */}
-      <div className="author-text">Posted by: Daisy</div>
+      <div className="author-text">Posted by: {note.userName}</div>
       {note.tags ? (
         <div className="tags-container">
           {note.tags.map((tag, i) => (

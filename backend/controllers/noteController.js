@@ -1,12 +1,15 @@
 const asyncHandler = require("express-async-handler");
 const Idea = require("../models/ideaModel");
 const Note = require("../models/noteModel");
+const User = require("../models/userModel");
 
 // Get idea notes
 const getIdeaNotes = asyncHandler(async (req, res) => {
   // Bring back notes with idea
   const idea = await Idea.findById(req.params.id).populate("notes");
+
   idea.notes = idea.notes.sort((a, b) => b.createdAt - a.createdAt);
+
   res.status(200).json(idea);
 });
 
@@ -20,6 +23,7 @@ const createIdeaNote = asyncHandler(async (req, res) => {
   const note = await Note.create({
     text: req.body.text,
     user: req.user.id,
+    userName: req.user.name,
     idea: req.params.id,
     tags: req.body.tags,
     noteType: req.body.noteType,

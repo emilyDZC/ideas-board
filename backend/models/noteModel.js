@@ -16,6 +16,10 @@ const noteSchema = mongoose.Schema(
       required: true,
       ref: "User",
     },
+    userName: {
+      type: String,
+      required: false,
+    },
     tags: {
       type: Array,
       required: false,

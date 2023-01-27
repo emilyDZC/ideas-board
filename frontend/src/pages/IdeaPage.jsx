@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getIdea, reset } from "../features/ideas/ideaSlice";
 import NoteItem from "../components/NoteItem";
 import NoteForm from "../components/NoteForm";
-import Spinner from "../components/Spinner";
+// import Spinner from "../components/Spinner";
 
 function IdeaPage() {
   const [showForm, setShowForm] = useState(false);
@@ -14,7 +14,7 @@ function IdeaPage() {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { idea, isLoading, isError, message } = useSelector((state) => state.ideas);
+  const { idea, isError, message } = useSelector((state) => state.ideas);
 
   useEffect(() => {
     if (isError) {
@@ -30,7 +30,7 @@ function IdeaPage() {
     return () => {
       dispatch(reset());
     };
-  }, [user, navigate, isError, message, dispatch]);
+  }, [user, navigate, ideaId, isError, message, dispatch]);
 
   //   if (isLoading) {
   //     return <Spinner />;

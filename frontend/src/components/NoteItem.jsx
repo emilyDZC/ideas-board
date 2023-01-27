@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 // import { deleteIdea } from "../features/ideas/ideaSlice";
 
 function NoteItem({ note }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <div className="note-item">

@@ -17,12 +17,13 @@ function IdeasBoard() {
   const colours = ["76949F", "86BBBD", "6A6B83", "5F506B", "533747"];
 
   useEffect(() => {
-    if (isError) {
-      console.log(message);
-    }
-
     if (!user) {
       navigate("/login");
+    }
+
+    if (isError) {
+      console.log(message);
+      return;
     }
 
     dispatch(getIdeas());

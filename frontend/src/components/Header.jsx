@@ -10,7 +10,7 @@ function Header() {
 
   const onLogout = () => {
     dispatch(logout());
-    dispatch(reset());
+    // dispatch(reset());
     navigate("/");
   };
 
@@ -23,7 +23,7 @@ function Header() {
       <ul>
         {user ? (
           <li>
-            <button className="btn" onClick={onLogout}>
+            <button className="btn btn-logout" onClick={onLogout}>
               <FaSignOutAlt /> Logout
             </button>
           </li>

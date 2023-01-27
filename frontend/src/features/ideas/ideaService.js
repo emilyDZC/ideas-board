@@ -69,6 +69,18 @@ const deleteIdea = async (ideaId, token) => {
   return response.data;
 };
 
+const deleteNote = async (noteId, ideaId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.delete(API_URL + ideaId + "/notes/" + noteId, config);
+
+  return response.data;
+};
+
 const ideaService = {
   createIdea,
   getIdeas,

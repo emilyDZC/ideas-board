@@ -29,6 +29,9 @@ export const createIdea = createAsyncThunk("ideas/create", async (ideaData, thun
 
 // Get ideas
 export const getIdeas = createAsyncThunk("ideas/getAll", async (_, thunkAPI) => {
+  // if (!thunkAPI.getState().auth.user) {
+  //   return thunkAPI.rejectWithValue("No user found");
+  // }
   try {
     const token = thunkAPI.getState().auth.user.token;
     return await ideaService.getIdeas(token);
@@ -162,13 +165,6 @@ export const ideaSlice = createSlice({
       .addCase(createIdeaNote.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        // console.log(action.payload.idea);
-        const thisIdea = state.ideas.filter((idea) => {
-          console.log({ idea });
-          return idea._id == action.payload.idea;
-        });
-        // console.log({ thisIdea });
-        // thisIdea.notes.push(action.payload);
       })
       .addCase(createIdeaNote.rejected, (state, action) => {
         state.isLoading = false;

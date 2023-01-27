@@ -36,6 +36,11 @@ function IdeaPage() {
   //     return <Spinner />;
   //   }
 
+  const refreshPage = () => {
+    setShowForm(false);
+    dispatch(getIdea(ideaId));
+  };
+
   return (
     <div>
       <div className="idea-header">{idea.text}</div>
@@ -44,7 +49,7 @@ function IdeaPage() {
           {showForm ? "Hide" : "Add note"}
         </button>
       </div>
-      {showForm && <NoteForm ideaId={idea._id} onSave={() => setShowForm(false)} />}
+      {showForm && <NoteForm ideaId={idea._id} onSave={() => refreshPage()} />}
 
       <div className="notes-container">{idea.notes && idea.notes.map((note) => <NoteItem key={note._id} note={note} />)}</div>
     </div>

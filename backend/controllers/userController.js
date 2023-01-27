@@ -48,6 +48,10 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 const loginUser = asyncHandler(async (req, res) => {
+  if (!req.body.email || !req.body.password) {
+    res.status(400);
+    throw new Error("No login details found");
+  }
   const { email, password } = req.body;
   const user = await User.findOne({ email });
 

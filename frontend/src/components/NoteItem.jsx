@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 // import { deleteIdea } from "../features/ideas/ideaSlice";
 
 function NoteItem({ note }) {
